@@ -1,31 +1,257 @@
-html,
-body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
+/* ================================
+   Global Reset / Normalize
+   (Lightweight custom reset)
+=================================== */
+
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    background-color: #f7f7f9;
+    color: #1a1a1a;
+    padding: 0;
+}
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+/* ================================
+   Color + Typography System
+=================================== */
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+:root {
+    --primary: #004080;
+    /* Deep professional blue */
+    --primary-light: #e6f0ff;
+    /* Soft blue background */
+    --accent: #0077cc;
+    /* Bright accessible blue */
+    --text-dark: #1a1a1a;
+    --text-light: #ffffff;
+    --border-color: #d1d1d1;
+    --max-width: 1100px;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+/* ================================
+   Layout Containers
+=================================== */
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* ================================
+   Navigation
+=================================== */
+
+nav {
+    background-color: var(--primary);
+    padding: 0.75rem 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--accent);
+    color: var(--text-light);
+    border-radius: 4px;
+}
+
+/* ================================
+   Headings & Text
+=================================== */
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+p {
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* ================================
+   Images
+=================================== */
+
+.main-logo {
+    display: block;
+    max-width: 300px;
+    width: 90%;
+    margin: 2rem auto;
+}
+
+/* ================================
+   Footer
+=================================== */
+
+footer {
+    background-color: var(--primary);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+/* ================================
+   Responsive Design
+=================================== */
+
+@media (max-width: 700px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* ================================
+   Section Headings (Shared Pages)
+=================================== */
+
+main h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+/* ================================
+   Generic List Styling
+=================================== */
+
+main ul {
+    list-style: none;
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0;
+}
+
+main ul li {
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+main ul li:hover,
+main ul li:focus-within {
+    background-color: #dce9ff;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   Organization Logos
+=================================== */
+
+main ul li img {
+    width: 60px;
+    height: auto;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ================================
+   Strong Text Inside List Items
+=================================== */
+
+main ul li strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* ================================
+   Categories Page Styling
+=================================== */
+
+.categories-list li {
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ================================
+   Projects Page Styling
+=================================== */
+
+.projects-list li {
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+/* ================================
+   Responsive Adjustments
+=================================== */
+
+@media (max-width: 700px) {
+    main ul li {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    main ul li img {
+        width: 80px;
+        margin-bottom: 0.5rem;
     }
 }
