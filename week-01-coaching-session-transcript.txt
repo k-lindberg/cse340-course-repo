@@ -1,0 +1,91 @@
+Week 01 Coaching Session Transcript
+
+Assistant: I am your supportive, non-judgmental Learning Coach and Software Mentor. Welcome! Just to be clear from the start, this is a coaching session, not a test. It is perfectly okay—and even encouraged—to say 'I don't know' or 'I made a mistake.' That's the fastest way we'll learn today.
+
+What name would you like me to use during our coaching session?
+
+Kristin: Kristin
+
+Assistant: Thanks, Kristin. I’ll start with the Express routing in your open project and use the relevant code from server.js as our first discussion point.
+
+Assistant: In server.js, this route handles requests to the home page:
+
+app.get('/', async (req, res) => {
+    const title = 'Home';
+    res.render('home', { title });
+});
+
+What happens when a browser requests /, and why do you think this route renders the home EJS page while passing the title value?
+
+Kristin: When the browser requests /, it renders the Home page. The title value is shown as the page title after it is rendered.
+
+Assistant: Exactly, Kristin. app.get('/') responds to a browser’s GET request for /, and res.render('home', { title }) renders the Home page while making title available to the EJS template.
+
+What is the purpose of req and res in this route?
+
+Kristin: req means request. res is response. When a person visits the URL, req runs the function and res sends the home.html back
+
+Assistant: Good start, Kristin. req is the request object and res is the response object. One small correction: Express invokes the callback when the request arrives; req itself does not run the function. Also, this route sends rendered HTML from home.ejs, not a file named home.html.
+
+In server.js, how does res.render('home', { title }) turn the EJS template into the HTML sent to the browser?
+
+Kristin: res.render tells Express to get the specific template, 'home' is the name of the EJS file. So this is getting the template from Express and putting it on the home.ejs file
+
+Assistant: That’s correct. Express finds home.ejs, processes its EJS markup with the { title } data, and sends the resulting HTML to the browser.
+
+Why is the route callback marked async even though it does not currently use await?
+
+Kristin: That wasn't discussed in my class materials
+
+Assistant: That’s okay, Kristin. We can set that detail aside since it wasn’t part of your class materials. The important routing idea is that Express matches the URL and HTTP method, then renders the selected EJS page.
+
+Looking at the other routes in server.js, how are the /organizations, /projects, and /categories routes similar to the home route?
+
+Kristin: They are all the same function, just rendering the different pages of the website
+
+Assistant: Exactly. Each route uses the same pattern: app.get() receives a URL and callback function, then res.render() selects the matching page and passes its title.
+
+Let’s move to Topic 2: JavaScript Language Principles. In server.js, this function uses const and object shorthand:
+
+app.get('/', async (req, res) => {
+    const title = 'Home';
+    res.render('home', { title });
+});
+
+What do you understand about const title and the { title } object passed to res.render()?
+
+Kristin: The const is a variable that doesn't change later on. That variable of const title will be used as the title of the page.
+
+Assistant: Correct. const prevents the title variable from being reassigned, and its value is passed to the template as the page title.
+
+What does { title } mean in this code compared with the longer form { title: title }?
+
+Kristin: title means it uses the variable that was already declared
+
+Assistant: Yes, exactly: the shorthand uses the already-declared title variable as both the property name and its value.
+
+Assistant: I’m moving to the EJS layer now so we can connect that server-side value to the page markup.
+
+Assistant: In header.ejs, <%= title %> outputs its value into the HTML <title> element, while home.ejs includes the header and displays the same value in an <h1>.
+
+How do the include('partials/header') and include('partials/footer') statements help organize the page?
+
+Kristin: When you use the partials, you create a seperate page for each, then you import them into each page that will use them. That way if you need to change something you just change it on one page instead of multiple
+
+Assistant: That’s the key benefit: shared markup is maintained once and reused across pages. One refinement is that these partials are reusable fragments, not separate browser pages; EJS inserts them into each full page during rendering.
+
+Assistant: Let’s move to Topic 4: Frontend CSS. In main.css, this CSS controls the width and spacing of the main content:
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+What effect do max-width, margin: 0 auto, and padding have on the layout?
+
+Kristin: max-width means the element can only be a certain number of pixels wide on the screen, margin: 0 auto centers an element horizonally on the page, padding adds space around the element directly around it
+
+Assistant: That’s correct. max-width limits the content width, margin: 0 auto centers it horizontally when there is extra space, and padding creates space inside the element between its content and its edges.
+
+Session conclusion: All four required topics were discussed: Express routing, JavaScript language principles, EJS partials and pages, and frontend CSS.
