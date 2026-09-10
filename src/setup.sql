@@ -38,3 +38,38 @@ VALUES
 ('3', 'Community Storytime Crew', 'Organized reading visits', 'BrightLeaf Public Library, Eagle Mountain, UT', '2024-03-03'),
 ('3', 'Neighborhood Cleanup Blitz', 'Coordinated volunteers', 'Canyonview District, Lehi, UT', '2025-04-19'),
 ('3', 'Meal Prep for Hope', 'Prepared meals', 'ShelterOne Kitchen, Midvale, UT', '2026-08-30');
+
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO category (name)
+VALUES
+('Infrastructure'),
+('Sustainability'),
+('Community');
+
+CREATE TABLE service_project_category (
+    service_project_id INT NOT NULL REFERENCES service_project(service_project_id),
+    category_id INT NOT NULL REFERENCES category(category_id),
+    PRIMARY KEY (service_project_id, category_id)
+);
+
+INSERT INTO service_project_category (service_project_id, category_id)
+VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 3),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3);
