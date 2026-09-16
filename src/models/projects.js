@@ -1,5 +1,5 @@
 import db from './db.js'
-import { getAllOrganizations } from './organizations.js'
+import { getAllOrganizationDetails } from './organizations.js'
 
 const getAllProjects = async () => {
     const query = `
@@ -21,4 +21,24 @@ const getAllProjects = async () => {
     return result.rows;
 }
 
-export { getAllProjects }
+const getAllProjectsByOrganizationId = async (organizationId) => {
+    const query = `
+        SELECT
+          service_project_id,
+          organization_id,
+          title,
+          description,
+          location,
+          project_date
+        FROM public.service_project
+        WHERE organization_id = $1
+        ORDER BY project_date;
+      `;
+
+    const queryParams = [organizationId];
+    const result = await db.query(query, queryParams);
+
+    return result.rows;
+};
+
+export { getAllProjects, getAllProjectsByOrganizationId }

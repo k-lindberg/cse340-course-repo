@@ -24,7 +24,7 @@ CREATE TABLE service_project (
 INSERT INTO service_project (organization_id, title, description, location, project_date)
 VALUES
 ('1', 'Solar Shelter Initiative', 'Installed solar panels', 'Maple Ridge Community Shelter, Riverton, UT', '2024-03-12'),
-('1', 'Green Pathways Project', 'Built recycled‑material walking paths', 'Brookside Park, Holladay, UT', '2024-04-05')
+('1', 'Green Pathways Project', 'Built recycled‑material walking paths', 'Brookside Park, Holladay, UT', '2024-04-05'),
 ('1', 'Community Tool Library Construction', 'Constructed a lending facility', 'Westview Resource Center, Provo, UT', '2025-10-18'),
 ('1', 'Eco‑Playground Build Day', 'Created a sustainable playground', 'Sunrise Meadows Elementary, Saratoga Springs, UT', '2026-05-27'),
 ('1', 'Rainwater Harvesting Retrofit', 'Installed rain‑collection systems', 'Heritage Hall Community Center, Ogden, UT', '2024-08-09'),
