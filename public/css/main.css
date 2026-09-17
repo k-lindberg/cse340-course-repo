@@ -170,6 +170,14 @@ main h2 {
     text-align: center;
 }
 
+main h3 {
+    text-align: center;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
 /* ================================
    Generic List Styling
 =================================== */
@@ -253,5 +261,97 @@ main ul li strong {
     main ul li img {
         width: 80px;
         margin-bottom: 0.5rem;
+    }
+}
+
+/* ================================
+   Organization Details Page
+=================================== */
+
+.organization-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.organization-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.organization-header img {
+    width: 100px;
+    max-width: 60%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem auto;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.organization-description {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.15rem;
+    background: var(--primary-light);
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    line-height: 1.6;
+}
+
+/* ================================
+   Service Projects List
+=================================== */
+
+.projects-list {
+    list-style: none;
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0;
+}
+
+.projects-list li {
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.projects-list li:hover {
+    background-color: #dce9ff;
+    transform: translateY(-2px);
+}
+
+.projects-list li a {
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.15rem;
+}
+
+.projects-list li a:hover {
+    color: var(--accent);
+}
+
+/* ================================
+   Responsive Adjustments
+=================================== */
+
+@media (max-width: 700px) {
+    .organization-header img {
+        width: 140px;
+    }
+
+    .organization-description {
+        font-size: 1.05rem;
+        padding: 1rem;
+    }
+
+    .projects-list li {
+        text-align: center;
     }
 }

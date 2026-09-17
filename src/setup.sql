@@ -23,24 +23,23 @@ CREATE TABLE service_project (
 
 INSERT INTO service_project (organization_id, title, description, location, project_date)
 VALUES
-('1', 'Solar Shelter Initiative', 'Installed solar panels', 'Maple Ridge Community Shelter, Riverton, UT', '2026-11-15'),
-('1', 'Green Pathways Project', 'Built recycled‑material walking paths', 'Brookside Park, Holladay, UT', '2026-12-01'),
-('1', 'Community Tool Library Construction', 'Constructed a lending facility', 'Westview Resource Center, Provo, UT', '2027-01-20'),
-('1', 'Eco‑Playground Build Day', 'Created a sustainable playground', 'Sunrise Meadows Elementary, Saratoga Springs, UT', '2027-03-05'),
-('1', 'Rainwater Harvesting Retrofit', 'Installed rain‑collection systems', 'Heritage Hall Community Center, Ogden, UT', '2027-04-10'),
+('1', 'Solar Shelter Initiative', 'A full solar-panel array will be installed to power the community shelter sustainably.', 'Maple Ridge Community Shelter, Riverton, UT', '2026-11-15'),
+('1', 'Green Pathways Project', 'New walking paths will be built using recycled and eco-friendly materials.', 'Brookside Park, Holladay, UT', '2026-12-01'),
+('1', 'Community Tool Library Construction', 'A fully stocked community tool-lending facility will be constructed.', 'Westview Resource Center, Provo, UT', '2027-01-20'),
+('1', 'EcoPlayground Build Day', 'A sustainable playground will be created using reclaimed and low-impact materials.', 'Sunrise Meadows Elementary, Saratoga Springs, UT', '2027-03-05'),
+('1', 'Rainwater Harvesting Retrofit', 'A rain-collection system will be installed to support water conservation at the center.', 'Heritage Hall Community Center, Ogden, UT', '2027-04-10'),
 
-('2', 'Neighborhood Micro‑Garden Installations', 'Set up raised beds', 'Cedar Hollow Apartments, Salt Lake City, UT', '2026-11-20'),
-('2', 'Youth Hydroponics Lab', 'Launched a hydroponics program', 'Riverbend Youth Center, West Jordan, UT', '2027-02-14'),
-('2', 'Seasonal Crop Swap Festival', 'Hosted a community crop exchange', 'Harvest Square Plaza, Layton, UT', '2027-05-01'),
-('2', 'Compost for All Program', 'Distributed compost bins', 'Lakeside Neighborhood Hub, American Fork, UT', '2027-03-22'),
-('2', 'Pollinator Corridor Planting', 'Planted native flowers', 'Pioneer Trail Parkway, Farmington, UT', '2027-03-25'),
+('2', 'Neighborhood MicroGarden Installations', 'Raised micro-gardens will be set up to expand local food-growing capacity.', 'Cedar Hollow Apartments, Salt Lake City, UT', '2026-11-20'),
+('2', 'Youth Hydroponics Lab', 'A hands-on hydroponics program will be launched for youth education.', 'Riverbend Youth Center, West Jordan, UT', '2027-02-14'),
+('2', 'Seasonal Crop Swap Festival', 'A community festival will be hosted where residents can exchange homegrown crops.', 'Harvest Square Plaza, Layton, UT', '2027-05-01'),
+('2', 'Compost for All Program', 'Compost bins will be distributed and residents will learn how to reduce food waste.', 'Lakeside Neighborhood Hub, American Fork, UT', '2027-03-22'),
+('2', 'Pollinator Corridor Planting', 'Native flowers will be planted to strengthen the local pollinator corridor.', 'Pioneer Trail Parkway, Farmington, UT', '2027-03-25'),
 
-('3', 'Warm Winter Drive', 'Distributed winter supplies', 'HopeBridge Outreach Center, Orem, UT', '2026-12-10'),
-('3', 'Senior Tech Support Week', 'Held tech‑help sessions', 'Golden Years Community Home, Bountiful, UT', '2027-01-08'),
-('3', 'Community Storytime Crew', 'Organized reading visits', 'BrightLeaf Public Library, Eagle Mountain, UT', '2026-11-05'),
-('3', 'Neighborhood Cleanup Blitz', 'Coordinated volunteers', 'Canyonview District, Lehi, UT', '2027-02-01'),
-('3', 'Meal Prep for Hope', 'Prepared meals', 'ShelterOne Kitchen, Midvale, UT', '2027-04-18');
-
+('3', 'Warm Winter Drive', 'Warm winter supplies will be distributed to community members in need.', 'HopeBridge Outreach Center, Orem, UT', '2026-12-10'),
+('3', 'Senior Tech Support Week', 'A week of tech-help sessions will be held for senior residents.', 'Golden Years Community Home, Bountiful, UT', '2027-01-08'),
+('3', 'Community Storytime Crew', 'Reading visits will be organized to support literacy and community connection.', 'BrightLeaf Public Library, Eagle Mountain, UT', '2026-11-05'),
+('3', 'Neighborhood Cleanup Blitz', 'Volunteers will be coordinated to complete a large-scale neighborhood cleanup.', 'Canyonview District, Lehi, UT', '2027-02-01'),
+('3', 'Meal Prep for Hope', 'Nutritious meals will be prepared for individuals experiencing food insecurity.', 'ShelterOne Kitchen, Midvale, UT', '2027-04-18');
 
 CREATE TABLE category (
     category_id SERIAL PRIMARY KEY,
