@@ -19,7 +19,7 @@ const getAllProjects = async () => {
     const result = await db.query(query);
 
     return result.rows;
-}
+};
 
 const getAllProjectsByOrganizationId = async (organizationId) => {
     const query = `

@@ -10,11 +10,12 @@ const getAllCategories = async () => {
     const result = await db.query(query);
 
     return result.rows;
-}
+};
 
 const getCategoryById = async (id) => {
     const query = `
-        SELECT name
+        SELECT category_id,
+               name
         FROM public.category
         WHERE category_id = $1;
     `;
@@ -22,7 +23,7 @@ const getCategoryById = async (id) => {
     const result = await db.query(query, [id]);
 
     return result.rows[0];
-}
+};
 
 const getCategoriesOnProject = async (projectId) => {
     const query = `
@@ -36,7 +37,7 @@ const getCategoriesOnProject = async (projectId) => {
     const result = await db.query(query, [projectId]);
 
     return result.rows;
-}
+};
 
 const getProjectsByCategory = async (categoryId) => {
     const query = `
@@ -50,7 +51,7 @@ const getProjectsByCategory = async (categoryId) => {
     const result = await db.query(query, [categoryId]);
 
     return result.rows;
-}
+};
 
 const assignCategoryToProject = async (projectId, categoryId) => {
     const query = `
@@ -59,7 +60,7 @@ const assignCategoryToProject = async (projectId, categoryId) => {
     `;
 
     await db.query(query, [projectId, categoryId]);
-}
+};
 
 const updateCategoryAssignments = async (projectId, categoryIds) => {
     // First, delete existing category assignments for the project
@@ -73,6 +74,23 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
     for (const categoryId of categoryIds) {
         await assignCategoryToProject(projectId, categoryId);
     }
-}
+};
 
-export { getAllCategories, getCategoryById, getCategoriesOnProject, getProjectsByCategory, assignCategoryToProject, updateCategoryAssignments };
+const createCategory = async (name) => {
+    const query = `
+        INSERT INTO public.category (name)
+        VALUES ($1);
+    `;
+    await db.query(query, [name]);
+};
+
+const updateCategory = async (id, name) => {
+    const query = `
+        UPDATE public.category
+        SET name = $2
+        WHERE category_id = $1;
+    `;
+    await db.query(query, [id, name]);
+};
+
+export { getAllCategories, getCategoryById, getCategoriesOnProject, getProjectsByCategory, assignCategoryToProject, updateCategoryAssignments, createCategory, updateCategory };
