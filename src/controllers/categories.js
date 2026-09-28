@@ -9,6 +9,8 @@ const categoryValidation = [
         .isLength({ min: 3, max: 100 }).withMessage('Category name must be between 3 and 100 characters long')
 ];
 
+const renderNotFound = (res) => res.status(404).render('errors/404', { title: 'Page Not Found' });
+
 const showCategoriesPage = async (req, res) => {
     const categories = await getAllCategories();
     const title = 'Service Categories';
@@ -20,6 +22,8 @@ const showCategoryDetailsPage = async (req, res) => {
     const { id } = req.params;
 
     const categoryDetails = await getCategoryById(id);
+    if (!categoryDetails) return renderNotFound(res);
+
     const projects = await getProjectsByCategory(id);
 
     const title = 'Category Details';
@@ -35,6 +39,8 @@ const showAssignCategoriesForm = async (req, res) => {
     const projectId = req.params.projectId;
 
     const projectDetails = await getProjectDetails(projectId);
+    if (!projectDetails) return renderNotFound(res);
+
     const categories = await getAllCategories();
     const assignedCategories = await getCategoriesOnProject(projectId);
 
@@ -62,7 +68,7 @@ const processAssignCategoriesForm = async (req, res) => {
 
 const showNewCategoryForm = async (req, res) => {
     const title = 'Add New Category';
-    res.render('new-category', { title });
+    res.render('new-category', { title, errors: [], name: '' });
 };
 
 const processNewCategoryForm = async (req, res) => {
@@ -71,7 +77,7 @@ const processNewCategoryForm = async (req, res) => {
 
     if (!errors.isEmpty()) {
         const title = 'Add New Category';
-        res.render('new-category', { title, errors: errors.array() });
+        res.render('new-category', { title, errors: errors.array(), name });
         return;
     }
 
@@ -88,6 +94,8 @@ const processNewCategoryForm = async (req, res) => {
 const showEditCategoryForm = async (req, res) => {
     const categoryId = req.params.id;
     const categoryDetails = await getCategoryById(categoryId);
+    if (!categoryDetails) return renderNotFound(res);
+
     const title = 'Edit Category';
 
     res.render('edit-category', { title, categoryDetails });

@@ -25,6 +25,8 @@ const organizationValidation = [
         .withMessage('Please provide a valid email address')
 ];
 
+const renderNotFound = (res) => res.status(404).render('errors/404', { title: 'Page Not Found' });
+
 const showOrganizationsPage = async (req, res) => {
     const organizations = await getAllOrganizations();
     const title = 'Our Partner Organizations';
@@ -39,6 +41,8 @@ const showOrganizationDetailsPage = async (req, res) => {
     
     const organizationId = req.params.organizationId;
     const organizationDetails = await getAllOrganizationDetails(organizationId);
+    if (!organizationDetails) return renderNotFound(res);
+
     const projects = await getAllProjectsByOrganizationId(organizationId);
     const title = 'Organization Details';
 
@@ -81,6 +85,8 @@ const processNewOrganizationForm = async (req, res) => {
 const showEditOrganizationForm = async (req, res) => {
     const organizationId = req.params.id;
     const organizationDetails = await getAllOrganizationDetails(organizationId);
+    if (!organizationDetails) return renderNotFound(res);
+
     const title = 'Edit Organization';
 
     res.render('edit-organization', { title, organizationDetails });

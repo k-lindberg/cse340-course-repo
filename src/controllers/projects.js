@@ -7,7 +7,7 @@ const projectValidation = [
     body('title')
         .trim()
         .notEmpty().withMessage('Title is required')
-        .isLength({ min: 3, max: 200 }).withMessage('Title must be between 3 and 200 characters long'),
+        .isLength({ min: 3, max: 150 }).withMessage('Title must be between 3 and 150 characters long'),
     body('description')
         .trim()
         .notEmpty().withMessage('Description is required')
@@ -15,7 +15,7 @@ const projectValidation = [
     body('location')
         .trim()
         .notEmpty().withMessage('Location is required')
-        .isLength({ max: 200 }).withMessage('Location must be less than 200 characters long'),
+        .isLength({ max: 255 }).withMessage('Location must be less than 255 characters long'),
     body('project_date')
         .notEmpty().withMessage('Project date is required')
         .isISO8601().withMessage('Date must be valid date format'),
@@ -25,6 +25,7 @@ const projectValidation = [
 ];
 
 const NUMBER_OF_UPCOMING_PROJECTS = 5;
+const renderNotFound = (res) => res.status(404).render('errors/404', { title: 'Page Not Found' });
 
 const showProjectsPage = async (req, res) => {
     const serviceProjects = await getUpcomingProjects(NUMBER_OF_UPCOMING_PROJECTS);
@@ -36,6 +37,8 @@ const showProjectsPage = async (req, res) => {
 const showProjectDetailsPage = async (req, res) => {
     const { id } = req.params;
     const projectDetails = await getProjectDetails(id);
+    if (!projectDetails) return renderNotFound(res);
+
     const title = 'Project Details';
     const categories = await getCategoriesOnProject(id); // Fetch categories for the project
 
@@ -62,7 +65,7 @@ const processNewProjectForm = async (req, res) => {
     }
 
     try {
-        const newProjectId = await createProject({ title, description, location, project_date, organization_id });
+        const newProjectId = await createProject( title, description, location, project_date, organization_id );
         req.flash('success', 'Project added successfully!');
         res.redirect(`/project/${newProjectId}`);
     } catch (error) {
@@ -74,6 +77,8 @@ const processNewProjectForm = async (req, res) => {
 const showEditProjectForm = async (req, res) => {
     const projectId = req.params.id;
     const projectDetails = await getProjectDetails(projectId);
+    if (!projectDetails) return renderNotFound(res);
+
     const organizations = await getAllOrganizations();
     const title = 'Edit Project';
 
