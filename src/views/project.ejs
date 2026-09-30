@@ -32,11 +32,11 @@
         </p>
 
         <% if (user && user.role_name==='admin' ) { %>
-            <a href="/assign-categories/<%= projectDetails.service_project_id %>">Edit Categories</a>
+            <a class="admin-link" href="/assign-categories/<%= projectDetails.service_project_id %>">Edit Categories</a>
         <% } %>
 
         <% if (user && user.role_name==='admin' ) { %>
-            <a href="/edit-project/<%= projectDetails.service_project_id %>">Edit Project</a>
+            <a class="admin-link" href="/edit-project/<%= projectDetails.service_project_id %>">Edit Project</a>
         <% } %>
 
     </main>
