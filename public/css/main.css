@@ -520,3 +520,44 @@ a:active {
     margin: 2rem auto 0 auto;
     font-size: 1.15rem;
 }
+
+/* ================================
+   Users Page Styling
+=================================== */
+
+.users-list {
+    list-style: none;
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0;
+}
+
+.users-list li {
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.users-list li:hover {
+    background-color: #dce9ff;
+    transform: translateY(-2px);
+}
+
+.users-list li strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .users-list li {
+        text-align: center;
+    }
+}
